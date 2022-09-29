@@ -35,3 +35,151 @@ weather_df =
   select(name, id, everything())
 ```
 
+
+Let's make a scatterplot.
+
+```{r}
+ggplot(weather_df, aes(x = tmin, y = tmax)) +
+  geom_point()
+```
+
+
+
+```{r}
+weather_df %>% 
+  drop_na() %>% 
+  filter(name == "CentralPark_NY") %>%
+  ggplot(aes(x = tmin, y = tmax)) +
+  geom_point()
+```
+
+
+```{r}
+weather_scatterplot =
+  weather_df %>% 
+  drop_na() %>% 
+  ggplot(aes(x = tmin, y = tmax)) +
+  geom_point()
+
+weather_scatterplot +
+  geom_point()
+```
+
+Fancy the plot.
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x = tmin, y=tmax, color = name)) +
+  geom_point()
+```
+
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x = tmin, y=tmax, color = name)) +
+  geom_point() +
+  geom_smooth()
+```
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x = tmin, y=tmax)) +
+  geom_point(aes(color = name)) +
+  geom_smooth()
+```
+
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x = tmin, y=tmax, color = name)) +
+  geom_point(alpha = .3) + #alpha -> transparent
+  geom_smooth(se = FALSE)
+```
+
+Make separate panels.
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x = tmin, y=tmax, color = name)) +
+  geom_point(alpha = .3) +
+  geom_smooth(se = FALSE) +
+  facet_grid(. ~ name)
+# facet_grid(name ~ .)->橫向的圖
+```
+
+
+`tamx` vs `tmin`, split it up.
+
+e.g. seasonal trend
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x = date, y = tmax, color = name)) +
+  geom_point(aes(size = prcp), alpha = .3) +
+  geom_smooth(se = FALSE) +
+  facet_grid(. ~name)
+```
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x = date, y = tmax, size = prcp)) +
+  geom_point(alpha = .3) +
+  geom_smooth(se = FALSE) +
+  facet_grid(. ~name)
+```
+
+## Some quick stuff
+
+Learning assessment!
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x = tmax, y = tmin)) + 
+  geom_hex()
+```
+
+
+## Univariate plots
+
+Histogram
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x = tmax, fill = name)) +
+  geom_histogram() +
+  facet_grid((. ~ name))
+```
+
+density plots
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x = tmax, fill = name)) + #color = name
+  geom_density(alpha = .3)
+```
+
+boxplots
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x = name, y = tmax, fill = name)) +
+  geom_boxplot()
+```
+
+violin plots
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x = name, y = tmax, fill = name)) +
+  geom_violin()
+```
+
+ridge plots
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x = tmax, y = name)) +
+  geom_density_ridges()
+```
+
+
