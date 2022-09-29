@@ -290,3 +290,4096 @@ weather_df %>%
     ## Warning: Removed 3 rows containing non-finite values (stat_density_ridges).
 
 ![](viz_part_01_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+
+## Saving and embedding plots
+
+``` r
+weather_scatterplot = 
+  weather_df %>% 
+  ggplot(aes(x = date, y = tmax, color = name)) +
+  geom_point(aes(size = prcp), alpha = .3) +
+  geom_smooth(se = FALSE) +
+  facet_grid(. ~name)
+
+weather_scatterplot
+```
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+    ## Warning: Removed 3 rows containing non-finite values (stat_smooth).
+
+    ## Warning: Removed 3 rows containing missing values (geom_point).
+
+![](viz_part_01_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+
+``` r
+ggsave("results/weather_scatterplot.pdf", weather_scatterplot,
+       width = 8, height = 5)
+```
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+    ## Warning: Removed 3 rows containing non-finite values (stat_smooth).
+    ## Removed 3 rows containing missing values (geom_point).
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9b>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '四月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<83>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '七月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e5>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<8d>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<81>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '十月 2017' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e4>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<b8>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<80>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<e6>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<9c>代替了 dot
+
+    ## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+    ## 'mbcsToSbcs' 裡轉換 '一月 2018' 發生錯誤：<88>代替了 dot
+
+``` r
+weather_scatterplot
+```
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+    ## Warning: Removed 3 rows containing non-finite values (stat_smooth).
+
+    ## Warning: Removed 3 rows containing missing values (geom_point).
+
+![](viz_part_01_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
