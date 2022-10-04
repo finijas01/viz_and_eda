@@ -39,7 +39,8 @@ weather_df =
 ## scatterplot
 
 ```{r}
-weather_df %>% 
+ggp_weather = 
+  weather_df %>% 
   ggplot(aes(x = tmin, y = tmax, color = name)) +
   geom_point(alpha = .5) +
   labs(
@@ -50,6 +51,14 @@ weather_df %>%
     ) +
   viridis::scale_color_viridis(
     name = "Location",
-    discrete = TRUE)
+    discrete = TRUE) #少了scale
+```
+
+## Themes
+
+```{r}
+ggp_weather +
+  theme_minimal() +
+  theme(legend.position = "bottom") #少了theme_bw()
 ```
 

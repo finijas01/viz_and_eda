@@ -64,7 +64,8 @@ weather_df =
 ## scatterplot
 
 ``` r
-weather_df %>% 
+ggp_weather = 
+  weather_df %>% 
   ggplot(aes(x = tmin, y = tmax, color = name)) +
   geom_point(alpha = .5) +
   labs(
@@ -75,9 +76,17 @@ weather_df %>%
     ) +
   viridis::scale_color_viridis(
     name = "Location",
-    discrete = TRUE)
+    discrete = TRUE) #少了scale
+```
+
+## Themes
+
+``` r
+ggp_weather +
+  theme_minimal() +
+  theme(legend.position = "bottom")
 ```
 
     ## Warning: Removed 15 rows containing missing values (geom_point).
 
-![](viz_part_02_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](viz_part_02_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
