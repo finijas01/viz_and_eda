@@ -5,7 +5,12 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.width = 6,
+  fig.asp = .6,
+  out.width = "80%"
+  )
 ```
 
 ## Let's import data
@@ -25,14 +30,14 @@ weather_df =
     date_min = "2017-01-01",
     date_max = "2017-12-31") %>%
   mutate(
-    name = recode(
+    name = recode( #增加變數
       id, 
       USW00094728 = "CentralPark_NY", 
       USC00519397 = "Waikiki_HA",
       USS0023B17S = "Waterhole_WA"),
     tmin = tmin / 10,
     tmax = tmax / 10) %>%
-  select(name, id, everything())
+  select(name, id, everything()) #排列
 ```
 
 
@@ -57,7 +62,7 @@ weather_df %>%
 ```{r}
 weather_scatterplot =
   weather_df %>% 
-  drop_na() %>% 
+  drop_na() %>% #去掉NA
   ggplot(aes(x = tmin, y = tmax)) +
   geom_point()
 
@@ -108,7 +113,7 @@ weather_df %>%
 ```
 
 
-`tamx` vs `tmin`, split it up.
+`tmax` vs `tmin`, split it up.
 
 e.g. seasonal trend
 
@@ -134,8 +139,26 @@ Learning assessment!
 
 ```{r}
 weather_df %>% 
+  filter(name == "CentralPark_NY") %>% 
+  mutate(
+    tmax_fahr = tmax * 9/5 + 32, 
+    tmin_fahr = tmin * 9/5 + 32) %>% 
+  ggplot(aes(x = tmin_fahr, y = tmax_fahr)) +
+  geom_point(alpha = .5) +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+
+```{r}
+weather_df %>% 
   ggplot(aes(x = tmax, y = tmin)) + 
   geom_hex()
+```
+
+
+```{r}
+ggplot(weather_df) + geom_point(aes(x = tmax, y = tmin), color = "blue")
+ggplot(weather_df) + geom_point(aes(x = tmax, y = tmin, color = "blue"))
 ```
 
 
@@ -155,8 +178,16 @@ density plots
 ```{r}
 weather_df %>% 
   ggplot(aes(x = tmax, fill = name)) + #color = name
-  geom_density(alpha = .3)
+  geom_density(alpha = .3, adjust = .5, color = "blue")
 ```
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x = tmax, color = name)) + 
+  geom_density(alpha = .3) +
+  geom_rug()
+```
+
 
 boxplots
 
@@ -180,6 +211,31 @@ ridge plots
 weather_df %>% 
   ggplot(aes(x = tmax, y = name)) +
   geom_density_ridges()
+```
+
+Learning assessment:
+
+```{r}
+ggplot(weather_df, aes(x = prcp, fill = name)) +
+  geom_histogram(position = "dodge", binwidth = 50)
+ggplot(weather_df, aes(x = prcp)) +
+  geom_density(aes(fill = name), alpha = .5)
+ggplot(weather_df, aes(x = name, y = prcp)) + geom_boxplot()
+ggplot(weather_df, aes(x = name, y = prcp)) +
+  geom_violin(aes(fill = name), alpha = .5) +
+  stat_summary(fun = "median", color = "blue")
+ggplot(weather_df, aes(x = prcp, y = name)) + #x,y要反過來
+  geom_density_ridges(scale = .85)
+
+weather_df %>% 
+  filter(prcp > 0) %>% 
+  ggplot(aes(x = prcp, y = name)) + 
+  geom_density_ridges(scale = .85)
+
+weather_df %>% 
+  filter(prcp >0) %>% 
+  ggplot(aes(x = prcp, fill = name)) +
+  geom_density(alpha = .5)
 ```
 
 
