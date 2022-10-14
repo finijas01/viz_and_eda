@@ -5,7 +5,22 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.width = 6,
+  fig.asp = .6,
+  out.width = "90%"
+)
+
+#theme_set(theme_minimal() + theme(legend.position = "bottom"))
+
+#options(
+#  ggplot2.continuous.colour = "viridis",
+#  ggplot2.continuous.fill = "viridis")
+
+#scale_colour_discrete = scale_colour_viridis_d
+#scale_fill_discrete = scale_fill_viridis_d
+                    
 ```
 
 ## Let's import data
@@ -50,18 +65,65 @@ ggp_weather =
     title = "Scatterplot of daily temp extremes",
     caption = "Data come from the rnoaa package"
     ) +
+  scale_x_continuous(
+    breaks = c(-15, 0, 15),
+    labels = c("-15ºC", "0", "15"),
+    limits = c(-20, 30)) +
+  scale_y_continuous(
+    trans = "sqrt",
+    position = "right") +
+  #scale_color_hue(name = "Location", h = c(100, 300))
   viridis::scale_color_viridis(
     name = "Location",
-    discrete = TRUE) #少了scale
+    discrete = TRUE) 
 ```
 
-## Themes (unfinished)
+## Themes
+
 
 ```{r}
 ggp_weather +
-  theme_minimal() +
+  # theme(legend.position = "bottom") #legend.position = "none"
+   theme_bw() +
+  # theme_classic() +
+  #theme_minimal() +
   theme(legend.position = "bottom") #少了theme_bw()
 ```
+
+Learning assessment:
+
+```{r}
+ggp_weather2 =
+  weather_df %>% 
+  ggplot(aes(x = date, y = tmax)) +
+  geom_point(aes(color = name), alpha = .5) +
+  labs(
+    title = "Scatterplot of Seasonal Trends",
+    x = "Date",
+    y = "Maximum Daily Temp (C)",
+    caption = "Data come from the rnoaa package") +
+  scale_y_continuous(
+    breaks = c(-10, 0, 10, 20, 30),
+    labels = c("-10ºC", "0", "10", "20", "30")) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+
+# Solution
+ggplot(weather_df, aes(x = date, y = tmax, color = name)) + 
+  geom_smooth(se = FALSE) + 
+  geom_point(aes(size = prcp), alpha = .75) + 
+  labs(
+    title = "Temperature plot",
+    x = "Date",
+    y = "Maxiumum daily temperature (C)",
+    caption = "Data from the rnoaa package"
+  ) + 
+  viridis::scale_color_viridis(discrete = TRUE) + 
+  theme_minimal() + 
+  theme(legend.position = "bottom")
+```
+
+
 
 ## Data in geom()
 
@@ -74,7 +136,7 @@ waikiki_df =
   weather_df %>% 
   filter(name == "Waikiki_HA")
 
-ggplot(waikiki_df, aes(x = date, y= tmax)) +
+ggplot(waikiki_df, aes(x = date, y= tmax, color = name)) +
   geom_point() +
   geom_line(data = central_park_df)
 ```
@@ -93,7 +155,17 @@ prcp_density_plot =
   weather_df %>% 
   filter(prcp >0) %>% 
   ggplot(aes(x = prcp, fill = name)) +
-  geom_density(alpha = .5) #unfinished
+  geom_density(alpha = .5) +
+  theme(legend.position = "none")
+
+tmax_date_plot =
+  weather_df %>% 
+  ggplot(aes(x = date, y = tmax, color = name)) +
+  geom_point(alpha = .5) +
+  geom_smooth(se = FALSE) +
+  theme(legend.position = "none")
+
+(tmax_tmin_plot + prcp_density_plot) / tmax_date_plot
 ```
 
 
@@ -104,6 +176,12 @@ weather_df %>%
   mutate(name = fct_reorder(name, tmax)) %>% #reorder by tmax's medium
   ggplot(aes(x = name, y = tmax)) +
   geom_boxplot()
+
+weather_df %>%
+  mutate(name = forcats::fct_relevel(name, c("Waikiki_HA", "CentralPark_NY", "Waterhole_WA"))) %>% 
+  ggplot(aes(x = name, y = tmax)) + 
+  geom_violin(aes(fill = name), color = "blue", alpha = .5) + 
+  theme(legend.position = "bottom")
 ```
 
 

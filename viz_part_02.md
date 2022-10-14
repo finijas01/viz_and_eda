@@ -75,22 +75,78 @@ ggp_weather =
     title = "Scatterplot of daily temp extremes",
     caption = "Data come from the rnoaa package"
     ) +
+  scale_x_continuous(
+    breaks = c(-15, 0, 15),
+    labels = c("-15ºC", "0", "15"),
+    limits = c(-20, 30)) +
+  scale_y_continuous(
+    trans = "sqrt",
+    position = "right") +
+  #scale_color_hue(name = "Location", h = c(100, 300))
   viridis::scale_color_viridis(
     name = "Location",
-    discrete = TRUE) #少了scale
+    discrete = TRUE) 
 ```
 
-## Themes (unfinished)
+## Themes
 
 ``` r
 ggp_weather +
-  theme_minimal() +
+  # theme(legend.position = "bottom") #legend.position = "none"
+   theme_bw() +
+  # theme_classic() +
+  #theme_minimal() +
   theme(legend.position = "bottom") #少了theme_bw()
 ```
 
-    ## Warning: Removed 15 rows containing missing values (geom_point).
+    ## Warning in self$trans$transform(x): 產生了 NaNs
 
-![](viz_part_02_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+    ## Warning: Transformation introduced infinite values in continuous y-axis
+
+    ## Warning: Removed 90 rows containing missing values (geom_point).
+
+<img src="viz_part_02_files/figure-gfm/unnamed-chunk-4-1.png" width="90%" />
+
+Learning assessment:
+
+``` r
+ggp_weather2 =
+  weather_df %>% 
+  ggplot(aes(x = date, y = tmax)) +
+  geom_point(aes(color = name), alpha = .5) +
+  labs(
+    title = "Scatterplot of Seasonal Trends",
+    x = "Date",
+    y = "Maximum Daily Temp (C)",
+    caption = "Data come from the rnoaa package") +
+  scale_y_continuous(
+    breaks = c(-10, 0, 10, 20, 30),
+    labels = c("-10ºC", "0", "10", "20", "30")) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+
+# Solution
+ggplot(weather_df, aes(x = date, y = tmax, color = name)) + 
+  geom_smooth(se = FALSE) + 
+  geom_point(aes(size = prcp), alpha = .75) + 
+  labs(
+    title = "Temperature plot",
+    x = "Date",
+    y = "Maxiumum daily temperature (C)",
+    caption = "Data from the rnoaa package"
+  ) + 
+  viridis::scale_color_viridis(discrete = TRUE) + 
+  theme_minimal() + 
+  theme(legend.position = "bottom")
+```
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+    ## Warning: Removed 3 rows containing non-finite values (stat_smooth).
+
+    ## Warning: Removed 3 rows containing missing values (geom_point).
+
+<img src="viz_part_02_files/figure-gfm/unnamed-chunk-5-1.png" width="90%" />
 
 ## Data in geom()
 
@@ -103,14 +159,14 @@ waikiki_df =
   weather_df %>% 
   filter(name == "Waikiki_HA")
 
-ggplot(waikiki_df, aes(x = date, y= tmax)) +
+ggplot(waikiki_df, aes(x = date, y= tmax, color = name)) +
   geom_point() +
   geom_line(data = central_park_df)
 ```
 
     ## Warning: Removed 3 rows containing missing values (geom_point).
 
-![](viz_part_02_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+<img src="viz_part_02_files/figure-gfm/unnamed-chunk-6-1.png" width="90%" />
 
 ## Patchwork …(unfinished)
 
@@ -126,8 +182,28 @@ prcp_density_plot =
   weather_df %>% 
   filter(prcp >0) %>% 
   ggplot(aes(x = prcp, fill = name)) +
-  geom_density(alpha = .5) #unfinished
+  geom_density(alpha = .5) +
+  theme(legend.position = "none")
+
+tmax_date_plot =
+  weather_df %>% 
+  ggplot(aes(x = date, y = tmax, color = name)) +
+  geom_point(alpha = .5) +
+  geom_smooth(se = FALSE) +
+  theme(legend.position = "none")
+
+(tmax_tmin_plot + prcp_density_plot) / tmax_date_plot
 ```
+
+    ## Warning: Removed 15 rows containing missing values (geom_point).
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+    ## Warning: Removed 3 rows containing non-finite values (stat_smooth).
+
+    ## Warning: Removed 3 rows containing missing values (geom_point).
+
+<img src="viz_part_02_files/figure-gfm/unnamed-chunk-7-1.png" width="90%" />
 
 ## Data manipulation
 
@@ -140,7 +216,19 @@ weather_df %>%
 
     ## Warning: Removed 3 rows containing non-finite values (stat_boxplot).
 
-![](viz_part_02_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+<img src="viz_part_02_files/figure-gfm/unnamed-chunk-8-1.png" width="90%" />
+
+``` r
+weather_df %>%
+  mutate(name = forcats::fct_relevel(name, c("Waikiki_HA", "CentralPark_NY", "Waterhole_WA"))) %>% 
+  ggplot(aes(x = name, y = tmax)) + 
+  geom_violin(aes(fill = name), color = "blue", alpha = .5) + 
+  theme(legend.position = "bottom")
+```
+
+    ## Warning: Removed 3 rows containing non-finite values (stat_ydensity).
+
+<img src="viz_part_02_files/figure-gfm/unnamed-chunk-8-2.png" width="90%" />
 
 ``` r
 pulse_df =
@@ -164,4 +252,4 @@ pulse_df %>%
 
     ## Warning: Removed 879 rows containing non-finite values (stat_boxplot).
 
-![](viz_part_02_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+<img src="viz_part_02_files/figure-gfm/unnamed-chunk-9-1.png" width="90%" />
