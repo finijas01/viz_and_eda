@@ -119,6 +119,8 @@ weather_df %>%
 
 ## General summaries
 
+mean(), median(), var(), sd(), mad(), IQR(), min(), and max()
+
 ```{r}
 weather_df %>% 
   group_by(name, month) %>% 
@@ -137,7 +139,7 @@ weather_df %>%
 ```{r}
 weather_df %>% 
   group_by(name, month) %>% 
-  summarize(across(prcp:tmin))
+  summarize(across(prcp:tmin, mean))
 ```
 
 This is a dataframe!!!

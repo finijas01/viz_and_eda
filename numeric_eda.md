@@ -210,6 +210,8 @@ weather_df %>%
 
 ## General summaries
 
+mean(), median(), var(), sd(), mad(), IQR(), min(), and max()
+
 ``` r
 weather_df %>% 
   group_by(name, month) %>% 
@@ -248,27 +250,27 @@ weather_df %>%
 ``` r
 weather_df %>% 
   group_by(name, month) %>% 
-  summarize(across(prcp:tmin))
+  summarize(across(prcp:tmin, mean))
 ```
 
-    ## `summarise()` has grouped output by 'name', 'month'. You can override using the
+    ## `summarise()` has grouped output by 'name'. You can override using the
     ## `.groups` argument.
 
-    ## # A tibble: 1,095 × 5
-    ## # Groups:   name, month [36]
-    ##    name           month       prcp  tmax  tmin
-    ##    <chr>          <date>     <dbl> <dbl> <dbl>
-    ##  1 CentralPark_NY 2017-01-01     0   8.9   4.4
-    ##  2 CentralPark_NY 2017-01-01    53   5     2.8
-    ##  3 CentralPark_NY 2017-01-01   147   6.1   3.9
-    ##  4 CentralPark_NY 2017-01-01     0  11.1   1.1
-    ##  5 CentralPark_NY 2017-01-01     0   1.1  -2.7
-    ##  6 CentralPark_NY 2017-01-01    13   0.6  -3.8
-    ##  7 CentralPark_NY 2017-01-01    81  -3.2  -6.6
-    ##  8 CentralPark_NY 2017-01-01     0  -3.8  -8.8
-    ##  9 CentralPark_NY 2017-01-01     0  -4.9  -9.9
-    ## 10 CentralPark_NY 2017-01-01     0   7.8  -6  
-    ## # … with 1,085 more rows
+    ## # A tibble: 36 × 5
+    ## # Groups:   name [3]
+    ##    name           month       prcp  tmax   tmin
+    ##    <chr>          <date>     <dbl> <dbl>  <dbl>
+    ##  1 CentralPark_NY 2017-01-01  39.5  5.98  0.748
+    ##  2 CentralPark_NY 2017-02-01  22.5  9.28  1.45 
+    ##  3 CentralPark_NY 2017-03-01  43.0  8.22 -0.177
+    ##  4 CentralPark_NY 2017-04-01  32.5 18.3   9.66 
+    ##  5 CentralPark_NY 2017-05-01  52.3 20.1  12.2  
+    ##  6 CentralPark_NY 2017-06-01  40.4 26.3  18.2  
+    ##  7 CentralPark_NY 2017-07-01  34.3 28.7  21.0  
+    ##  8 CentralPark_NY 2017-08-01  27.4 27.2  19.5  
+    ##  9 CentralPark_NY 2017-09-01  17.0 25.4  17.4  
+    ## 10 CentralPark_NY 2017-10-01  34.3 21.8  13.9  
+    ## # … with 26 more rows
 
 This is a dataframe!!!
 
